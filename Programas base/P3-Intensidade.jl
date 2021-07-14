@@ -79,7 +79,7 @@ function get_intensidade_laser_escalar(Sensores::Array, k::Number, E₀::Number,
     Nsensor = size(Sensores,1);
     I_laser = zeros(Nsensor)
     for i in 1:Nsensor
-       I_laser[i] = get_intensidade_laser_one_point( Sensores[i,3:4], E₀, ω₀, k)
+       I_laser[i] = get_intensidade_laser_one_point_escalar( Sensores[i,3:4], E₀, ω₀, k)
     end
     return I_laser
 end

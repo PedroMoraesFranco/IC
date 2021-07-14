@@ -18,15 +18,15 @@ include("Programas base\\P1-Criando nuvem.jl");
 include("Programas base\\P2-sensores.jl");
 include("Programas base\\P3-Intensidade.jl");
 include("Programas base\\P4-Beer_Lambert_law.jl");
-include("Extração\\E1-transmissão.jl");
 include("Plots\\Ploter.jl");
+include("Extração/E2-autoval.jl");
 
 #-Data-#
 
 
 vec = 0
 
-N = 500
+N = 100
 X = 10
 Y = 200
 ρ = N/(X*Y)
@@ -42,46 +42,28 @@ Angulo_inicial_sensor = 0
 Angulo_final_sensor = 360
 angulo_controle = 30
 b₀ = (4*X*ρ)/k;
-#Δ ;                                                   # Detuning - indicador de pertubação 
-
+Δ = 0;                             
 #-Plot parameters-#
-
-N_div = 10;
-tamanho = 1000;
-delta_min = -10;
-delta_max = 10;
-delta_range = collect(range(delta_min, delta_max, length = N_div)); #Colocar: delta em log 
-Transmissoes = zeros(N_div);
-Transmissoes2 = zeros(N_div);
-Transmissoes3 = zeros(N_div);
-b = zeros(N_div);
-for i in 1:N_div
-    Δ = delta_range[i]
-
-    Entrada_E1 = E1_transmissão_ENTRADA(
-        N,
-        X,
-        Y, 
-        ω₀,
-        k,
-        Γ₀, 
-        E₀,
-        Nsensor, 
-        Angulo_inicial_sensor, 
-        Angulo_final_sensor,
-        Δ,
-        angulo_controle,
-        ρ,
-        rₘᵢₙ
-    )
-    if vec == 1
-        resultados = E1_transmissão_vetorial(Entrada_E1)
-    else 
-        resultados = E1_transmissão_escalar(Entrada_E1)
-    end
-    Transmissoes[i] = resultados[2]
-    Transmissoes2[i] = resultados[1]
-    Transmissoes3[i] = resultados[3]
-    b[i] = 2/(16*(Δ^2)+1)
+Entrada_E2 =  E2_autoval_ENTRADA(
+    N,
+    X,
+    Y, 
+    ω₀,
+    k,
+    Γ₀, 
+    E₀,
+    Nsensor, 
+    Angulo_inicial_sensor, 
+    Angulo_final_sensor,
+    Δ,
+    angulo_controle,
+    ρ,
+    b₀
+)
+if vec == 1
+    Matriz = E2_autoval_vetorial(Entrada_E2)
+else 
+    Matriz = E2_autoval_escalar(Entrada_E2)
 end
-Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3)
+
+Autoval_real_por_imag(Matriz[1],Matriz[2])

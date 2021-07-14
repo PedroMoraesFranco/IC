@@ -1,18 +1,22 @@
 
-function E2_transmissão(variaveis_entrada::E1_transmissão_ENTRADA)
-    entrada_cloud = get_cloud_ENTRADA(
-        variaveis_entrada.N, 
+function E3_transmissão(variaveis_entrada::E1_transmissão_ENTRADA)
+    cloud = get_cloud_vetorial( 
+        variaveis_entrada.N,
+        variaveis_entrada.k, 
         variaveis_entrada.X, 
         variaveis_entrada.Y, 
-        variaveis_entrada.k,
-        variaveis_entrada.Δ, 
-        variaveis_entrada.Γ₀
-    )
-    cloud = get_cloud(entrada_cloud);
+        variaveis_entrada.rₘᵢₙ
+    );
 
-    r = cloud[1];
-    rij = cloud[2];
-    G = cloud[3];
+    β = get_β_vetorial(
+        cloud[3],
+        cloud[1], 
+        variaveis_entrada.E₀, 
+        variaveis_entrada.ω₀,
+        variaveis_entrada.k, 
+        variaveis_entrada.Γ₀/2,
+        variaveis_entrada.Δ
+    )
 
     Sensores = get_sensors(
         variaveis_entrada.X,
@@ -23,32 +27,22 @@ function E2_transmissão(variaveis_entrada::E1_transmissão_ENTRADA)
         variaveis_entrada.Angulo_final_sensor,
         variaveis_entrada.Nsensor
     )
-    r;
 
-    sensores = zeros(Nsensor,2);
-    sensores[:,1] = Sensores[:,3];
-    sensores[:, 2] = Sensores[:,4];
+    Posição_sensores = zeros(variaveis_entrada.Nsensor,2);
+    Posição_sensores[:,1] = Sensores[:,3];
+    Posição_sensores[:, 2] = Sensores[:,4];
 
-    EL_atoms = get_EL(
-        r, 
-        variaveis_entrada.E₀, 
-        variaveis_entrada.ω₀,
-        variaveis_entrada.k
-    )
-
-    β = get_β(G, EL_atoms);
-
-    I_espalhada =  get_intensidade_sensor(
-        sensores, 
+    I_espalhada =  get_intensidade_espalhada_vetorial(
+        Posição_sensores, 
         variaveis_entrada.k, 
         variaveis_entrada.E₀, 
         variaveis_entrada.ω₀, 
         variaveis_entrada.Γ₀, 
         β, 
-        r
+        cloud[1]
     )
 
-    I_Incidente = get_intensidade_laser(
+    I_Incidente = get_intensidade_laser_vetorial(
         Sensores, 
         variaveis_entrada.k, 
         variaveis_entrada.E₀, 
@@ -62,15 +56,11 @@ function E2_transmissão(variaveis_entrada::E1_transmissão_ENTRADA)
         variaveis_entrada.angulo_controle
     )
 
-    b = get_b_scalar(
-        variaveis_entrada.Δ, 
+    b = get_b_vectorial(
+        variaveis_entrada.Δ,
         variaveis_entrada.Γ₀
     )
-
-    BL_law = get_BL_law(
-        b,
-        variaveis_entrada.b₀
-    )
-
-    return E1_transmissão_SAÍDA(cloud, Sensores, EL_atoms, β, I_espalhada, I_Incidente, T_DIFUSO,T_COERENTE, BL_law, b)
+    b₀ = 4*variaveis_entrada.N/(variaveis_entrada.Y*variaveis_entrada.k)
+    BL = get_BL_law(b,b₀)
+    return T_DIFUSO, T_COERENTE, BL, b
 end
