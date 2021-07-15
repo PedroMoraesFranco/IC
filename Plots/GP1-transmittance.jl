@@ -26,7 +26,7 @@ include("Plots\\Ploter.jl");
 
 vec = 0
 
-N = 500
+N = 1000
 X = 10
 Y = 200
 ρ = N/(X*Y)
@@ -46,9 +46,9 @@ b₀ = (4*X*ρ)/k;
 
 #-Plot parameters-#
 
-N_div = 10;
+N_div = 200;
 tamanho = 1000;
-delta_min = -10;
+delta_min = 0;
 delta_max = 10;
 delta_range = collect(range(delta_min, delta_max, length = N_div)); #Colocar: delta em log 
 Transmissoes = zeros(N_div);
