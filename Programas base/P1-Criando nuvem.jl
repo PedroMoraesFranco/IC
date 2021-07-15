@@ -105,11 +105,11 @@ end
 
 
 function get_β_escalar(G,r, E₀, ω₀,k, Γ₀,Δ)
-    EL = get_EL(r, E₀, ω₀,k)*1im/2
+    EL = get_EL(r, E₀, ω₀,k)*(1im/2)
     A = Array{Complex{Float64}}(undef, N,N)
     @. A = 0 + 0im 
     A[LinearAlgebra.diagind(A)].= 1im*Δ
-    Matriz_resultante = (-Γ₀/2)*G-A
+    Matriz_resultante = G*(-Γ₀/2)-A
     β = Matriz_resultante\EL
     return β
 end
@@ -218,7 +218,7 @@ function get_β_vetorial(G,r, E₀, ω₀,k, Γ₁,Δ)
     A = Array{Complex{Float64}}(undef, 2*N,2*N)
     @. A = 0 + 0im 
     A[LinearAlgebra.diagind(A)].= 1im*Δ
-    Matriz_resultante = (-Γ₁/2)*G-A
+    Matriz_resultante = G*(-Γ₁/2)-A
     β = Matriz_resultante\EL_atoms
     return β
 end
