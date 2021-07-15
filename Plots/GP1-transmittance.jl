@@ -46,9 +46,9 @@ b₀ = 4*N/(Y*k)#(4*X*ρ)/k;
 
 #-Plot parameters-#
 
-N_div = 100;
+N_div = 1000;
 tamanho = 1000;
-delta_min = 0;
+delta_min = -10;
 delta_max = 10;
 delta_range = collect(range(delta_min, delta_max, length = N_div)); #Colocar: delta em log 
 Transmissoes = zeros(N_div);
