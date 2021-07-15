@@ -26,7 +26,7 @@ include("Plots\\Plotter.jl");
 
 vec = 1
 
-N = 250
+N = 500
 X = 100
 Y = 200
 ρ = N/(X*Y)

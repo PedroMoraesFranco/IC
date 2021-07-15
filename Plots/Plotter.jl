@@ -1,5 +1,4 @@
 
-
 function Transmissao_COERENTE_por_δ₀(delta_range,delta_min, delta_max, Transmissao)
     gr()
     theme(:vibrant)
@@ -27,6 +26,7 @@ function Transmissao_COERENTE_por_δ₀(delta_range,delta_min, delta_max, Transm
     xlabel!(L"$\delta_{0} $")
     ylabel!(L"$T_{Coerente}$")
 end
+
 
 function Transmissao_DIFUSA_por_δ₀(delta_range,delta_min, delta_max, Transmissao)
     gr()
@@ -56,6 +56,7 @@ function Transmissao_DIFUSA_por_δ₀(delta_range,delta_min, delta_max, Transmis
     ylabel!(L"$T_{Difusa}$")
 end
 
+
 function Transmissao_BL_por_δ₀(delta_range,delta_min, delta_max, Transmissao)
     gr()
     theme(:vibrant)
@@ -83,6 +84,7 @@ function Transmissao_BL_por_δ₀(delta_range,delta_min, delta_max, Transmissao)
     xlabel!(L"$\delta_{0} $")
     ylabel!(L"$T_{B-L}$")
 end
+
 
 function Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissao1, Transmissao2, Transmissao3)
         
@@ -155,6 +157,7 @@ function Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissao1, 
     #savefig("vec_T x delta0_1_N{$N}_Densidade={$ρ}_K={$k}.png")
 end
 
+
 function Transmissoes_por_b(delta_range,delta_min, delta_max, Transmissao1, Transmissao2, Transmissao3)
         
     gr()
@@ -224,6 +227,7 @@ function Transmissoes_por_b(delta_range,delta_min, delta_max, Transmissao1, Tran
     ylabel!(L"$T$")
     #savefig("vec_T x delta0_2_N{$N}_Densidade={$ρ}_K={$k}.png")
 end
+
 
 function Autoval_real_por_imag(gamma, delta)
     

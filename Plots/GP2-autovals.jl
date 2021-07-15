@@ -24,25 +24,26 @@ include("Extração/E2-autoval.jl");
 #-Data-#
 
 
-vec = 0
+vec = 1
 
-N = 100
-X = 10
+N = 500
+X = 100
 Y = 200
 ρ = N/(X*Y)
 rₘᵢₙ = 1/10*sqrt(ρ)                                       
 k = 1                                                   # Wave number - vetor
-ω₀ = Y/10                                               # Cintura 
+ω₀ =  6*π/k#Y/10                                               # Cintura 
 vetor_onda = (1,0)                                      # Vetor da onda
 c = 1                                                   # Density of modes
 Γ₀ = 1                                                  # Decay rate
-E₀ = Γ₀/1000                                            # Amplitude do Campo incidente 
+E₀ = Γ₀/1#000                                            # Amplitude do Campo incidente 
 Nsensor = 1000                                          # Number of sensors 
-Angulo_inicial_sensor = 0
-Angulo_final_sensor = 360
+Angulo_inicial_sensor = -90
+Angulo_final_sensor = 270
 angulo_controle = 30
-b₀ = (4*X*ρ)/k;
-Δ = 0;                             
+b₀ = 4*N/(Y*k)#(4*X*ρ)/k;
+Δ = 0;                                                   # Detuning - indicador de pertubação 
+ 
 #-Plot parameters-#
 Entrada_E2 =  E2_autoval_ENTRADA(
     N,
