@@ -18,7 +18,7 @@ include("Programas base\\P1-Criando nuvem.jl");
 include("Programas base\\P2-sensores.jl");
 include("Programas base\\P3-Intensidade.jl");
 include("Programas base\\P4-Beer_Lambert_law.jl");
-include("Plots\\Ploter.jl");
+include("Plots\\Plotter.jl");
 include("Extração/E2-autoval.jl");
 
 #-Data-#

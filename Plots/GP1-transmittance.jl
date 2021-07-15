@@ -19,16 +19,16 @@ include("Programas base\\P2-sensores.jl");
 include("Programas base\\P3-Intensidade.jl");
 include("Programas base\\P4-Beer_Lambert_law.jl");
 include("Extração\\E1-transmissão.jl");
-include("Plots\\Ploter.jl");
+include("Plots\\Plotter.jl");
 
 #-Data-#
 
 
 vec = 0
 
-N = 1000
+N = 200
 X = 10
-Y = 200
+Y = 20
 ρ = N/(X*Y)
 rₘᵢₙ = 1/10*sqrt(ρ)                                       
 k = 1                                                   # Wave number - vetor
@@ -46,7 +46,7 @@ b₀ = (4*X*ρ)/k;
 
 #-Plot parameters-#
 
-N_div = 200;
+N_div = 100;
 tamanho = 1000;
 delta_min = 0;
 delta_max = 10;
