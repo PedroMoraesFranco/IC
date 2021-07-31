@@ -26,3 +26,19 @@
    A pasta programas base contém códigos que guardam as funções básicas para a execução. Por exemplo o **P1** gera a nuvem da amostra.
 ### Teste 
    A pasta teste contém códigos em fase de teste.
+
+
+## 2. Funcionamento do programa
+   Para utilizarmos o programa devemos ir nos arquivos geradores de plot, após isso devemos colocar os parâmetros que queremos para nossa simulação e por fim rodamos o código.
+   
+
+## 3. Bibliotecas utilizadas
+### Plots
+### SpecialFunctions
+### LinearAlgebra
+### Distances
+### Statistics
+### ColorSchemes
+### Trapz
+### QuadGK
+### LatexStrings
