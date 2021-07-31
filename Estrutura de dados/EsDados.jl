@@ -123,6 +123,7 @@ mutable struct E1_transmissão_ENTRADA
     angulo_controle::Number 
     ρ::Number
     rₘᵢₙ::Number
+    Reflection::Number
 end
 
 mutable struct E1_transmissão_SAÍDA
