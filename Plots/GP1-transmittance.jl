@@ -1,3 +1,4 @@
+using QuadGK: include
 
 #Using Packages
 using Plots
@@ -18,15 +19,16 @@ include("Programas base\\P1-Criando nuvem.jl");
 include("Programas base\\P2-sensores.jl");
 include("Programas base\\P3-Intensidade.jl");
 include("Programas base\\P4-Beer_Lambert_law.jl");
+include("Programas base\\P5-ohm_law.jl")
 include("Extração\\E1-transmissão.jl");
 include("Plots\\Plotter.jl");
 
 #-Data-#
 
 
-vec = 1                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
+vec = 0                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
 
-N = 500                                                             # Number of atoms
+N = 250                                                             # Number of atoms
 X = 100                                                             # slab length
 Y = 200                                                             # slab width 
 ρ = N/(X*Y)                                                         # density
@@ -45,18 +47,19 @@ b₀ = 4*N/(Y*k)#(4*X*ρ)/k;                                           # optical
 Δ = 0;                                                              # Detuning - indicador de pertubação 
 delta_min = -10;                                                    # minimum Detuning
 delta_max = 10;                                                     # maximum Detuning
+N_div = 100;                                                       # number of divisions 
 delta_range = collect(range(delta_min, delta_max, length = N_div)); # Detuning range
+Reflection = 2                                                      # efficient reflection coefficient of the material
+
 
 #-Plot parameters-#
 
-N_div = 1000;                                                       # number of divisions 
 tamanho = 1000;                                                     # plot size
-
-
 
 Transmissoes = zeros(N_div);
 Transmissoes2 = zeros(N_div);
 Transmissoes3 = zeros(N_div);
+Transmissoes4 = zeros(N_div);
 b = zeros(N_div);
 for i in 1:N_div
     Δ = delta_range[i]
@@ -75,7 +78,8 @@ for i in 1:N_div
         Δ,
         angulo_controle,
         ρ,
-        rₘᵢₙ
+        rₘᵢₙ,
+        Reflection
     )
     if vec == 1
         resultados = E1_transmissão_vetorial(Entrada_E1)
@@ -85,5 +89,6 @@ for i in 1:N_div
     Transmissoes[i] = resultados[2]
     Transmissoes2[i] = resultados[1]
     Transmissoes3[i] = resultados[3]
+    Transmissoes4[i] = resultados[4]
 end
-Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3)
+Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)

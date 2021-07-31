@@ -63,10 +63,25 @@ function E1_transmissão_escalar(variaveis_entrada::E1_transmissão_ENTRADA)
         variaveis_entrada.Δ,
         variaveis_entrada.Γ₀
     )
+
     b₀ = 4*variaveis_entrada.N/(variaveis_entrada.Y*variaveis_entrada.k)
+
     BL = get_BL_law(b,b₀)
 
-    return T_DIFUSO, T_COERENTE, BL, b
+    σ = σ_scalar( 
+        variaveis_entrada.Δ,
+        variaveis_entrada.Γ₀,
+        variaveis_entrada.k
+    )
+
+    Ohm = ohm_law(
+        variaveis_entrada.X, 
+        variaveis_entrada.ρ, 
+        σ, 
+        variaveis_entrada.Reflection
+    )
+    
+    return T_DIFUSO, T_COERENTE, BL, Ohm
 end
 
 
@@ -131,7 +146,23 @@ function E1_transmissão_vetorial(variaveis_entrada::E1_transmissão_ENTRADA)
         variaveis_entrada.Δ,
         variaveis_entrada.Γ₀
     )
+
     b₀ = 4*variaveis_entrada.N/(variaveis_entrada.Y*variaveis_entrada.k)
+
     BL = get_BL_law(b,b₀)
-    return T_DIFUSO, T_COERENTE, BL, b
+
+    σ = σ_scalar( 
+        variaveis_entrada.Δ,
+        variaveis_entrada.Γ₀,
+        variaveis_entrada.k
+    )
+
+    Ohm = ohm_law(
+        variaveis_entrada.X, 
+        variaveis_entrada.ρ, 
+        σ, 
+        variaveis_entrada.Reflection
+    )
+
+    return T_DIFUSO, T_COERENTE, BL, Ohm
 end
