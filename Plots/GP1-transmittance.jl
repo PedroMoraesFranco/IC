@@ -24,33 +24,36 @@ include("Plots\\Plotter.jl");
 #-Data-#
 
 
-vec = 1
+vec = 1                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
 
-N = 500
-X = 100
-Y = 200
-ρ = N/(X*Y)
-rₘᵢₙ = 1/10*sqrt(ρ)                                       
-k = 1                                                   # Wave number - vetor
-ω₀ =  6*π/k#Y/10                                               # Cintura 
-vetor_onda = (1,0)                                      # Vetor da onda
-c = 1                                                   # Density of modes
-Γ₀ = 1                                                  # Decay rate
-E₀ = Γ₀/1#000                                            # Amplitude do Campo incidente 
-Nsensor = 1000                                          # Number of sensors 
-Angulo_inicial_sensor = -90
-Angulo_final_sensor = 270
-angulo_controle = 30
-b₀ = 4*N/(Y*k)#(4*X*ρ)/k;
-Δ = 0;                                                   # Detuning - indicador de pertubação 
+N = 500                                                             # Number of atoms
+X = 100                                                             # slab length
+Y = 200                                                             # slab width 
+ρ = N/(X*Y)                                                         # density
+rₘᵢₙ = 1/10*sqrt(ρ);                                                 # minimum distance between  
+k = 1                                                               # Wave number - vetor
+ω₀ =  6*π/k#Y/10                                                    # Cintura 
+vetor_onda = (1,0)                                                  # Vetor da onda
+c = 1                                                               # Density of modes
+Γ₀ = 1                                                              # Decay rate
+E₀ = Γ₀/1#000                                                       # Amplitude do Campo incidente 
+Nsensor = 1000                                                      # Number of sensors 
+Angulo_inicial_sensor = -90                                         # initial angle of sensor
+Angulo_final_sensor = 270                                           # final angle of sensor
+angulo_controle = 30                                                # coehrent angle 
+b₀ = 4*N/(Y*k)#(4*X*ρ)/k;                                           # optical depth
+Δ = 0;                                                              # Detuning - indicador de pertubação 
+delta_min = -10;                                                    # minimum Detuning
+delta_max = 10;                                                     # maximum Detuning
+delta_range = collect(range(delta_min, delta_max, length = N_div)); # Detuning range
 
 #-Plot parameters-#
 
-N_div = 1000;
-tamanho = 1000;
-delta_min = -10;
-delta_max = 10;
-delta_range = collect(range(delta_min, delta_max, length = N_div)); #Colocar: delta em log 
+N_div = 1000;                                                       # number of divisions 
+tamanho = 1000;                                                     # plot size
+
+
+
 Transmissoes = zeros(N_div);
 Transmissoes2 = zeros(N_div);
 Transmissoes3 = zeros(N_div);
