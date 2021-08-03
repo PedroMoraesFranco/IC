@@ -99,7 +99,7 @@ for i in 1:N_div
         BL_law_medio[j] = mean(resultados[3])
         ohm_law_medio[j] = mean(resultados[4])
     end
-    Transmissoes1[i] = T_COERENTE_medio[1]
+    Transmissoes[i] = T_COERENTE_medio[1]
     Transmissoes2[i] = T_DIFUSO_medio[1]
     Transmissoes3[i] = BL_law_medio[1]
     Transmissoes4[i] = ohm_law_medio[1]

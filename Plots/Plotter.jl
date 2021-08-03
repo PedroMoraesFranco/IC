@@ -174,7 +174,7 @@ function Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissao1, 
     xlabel!(L"$\delta_{0} $")
     ylabel!(L"$T$")
         
-    #savefig("vec_T x delta0_1_N{$N}_Densidade={$ρ}_K={$k}.png")
+    savefig("vec_T x delta0_1_N{$N}_Densidade={$ρ}_K={$k}.png")
 end
 
 
@@ -265,7 +265,7 @@ function Transmissoes_por_b(b,delta_min, delta_max, Transmissao1, Transmissao2, 
     )
     xlabel!(L"$b$")
     ylabel!(L"$T$")
-    #savefig("vec_T x delta0_2_N{$N}_Densidade={$ρ}_K={$k}.png")
+    savefig("vec_T x delta0_2_N{$N}_Densidade={$ρ}_K={$k}.png")
 end
 
 
