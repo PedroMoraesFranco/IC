@@ -50,7 +50,7 @@ delta_max = 10;                                                     # maximum De
 N_div = 100;                                                        # number of divisions 
 delta_range = collect(range(delta_min, delta_max, length = N_div)); # Detuning range
 Reflection = 0                                                      # efficient reflection coefficient of the material
-Realizações = 10                                                   # number of realizations 
+Realizações = 100                                                   # number of realizations 
 
 #-Plot parameters-#
 
@@ -94,8 +94,8 @@ for i in 1:N_div
             δ₀ = Δ/Γ₀
             b[i] = b₀/(4*(δ₀^2)+1)
         end
-        T_DIFUSO_medio[j] = mean(resultados[1])
-        T_COERENTE_medio[j] = mean(resultados[2])
+        T_DIFUSO_medio[j] = mean(abs(resultados[1])^2)
+        T_COERENTE_medio[j] = abs(mean(resultados[2]))^2
         BL_law_medio[j] = mean(resultados[3])
         ohm_law_medio[j] = mean(resultados[4])
     end
