@@ -42,8 +42,8 @@ Angulo_final_sensor = 270                                           # final angl
 angulo_controle = 30                                                # coehrent angle 
 b₀ = 4*N/(Y*k)#(4*X*ρ)/k;                                           # optical depth
 Δ = 0;                                                              # Detuning - indicador de pertubação 
-Y_min = 0;                                                      # minimum Detuning
-Y_max = 10;                                                     # maximum Detuning
+Y_min = 100;                                                      # minimum Detuning
+Y_max = 200;                                                     # maximum Detuning
 N_div = 100;                                                        # number of divisions 
 Y_range = collect(range(Y_min, Y_max, length = N_div)); # Detuning range
 Reflection = 0                                                      # efficient reflection coefficient of the material

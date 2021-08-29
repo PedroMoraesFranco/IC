@@ -1,5 +1,3 @@
-using QuadGK: include
-
 #Using Packages
 using Plots
 using SpecialFunctions
@@ -29,8 +27,8 @@ include("Plots\\Plotter.jl");
 vec = 0                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
 
 N = 500                                                            # Number of atoms
-X = 120                                                             # slab length
-Y = 200                                                             # slab width 
+X = 50                                                             # slab length
+Y = 10                                                             # slab width 
 ρ = N/(X*Y)                                                         # density
 rₘᵢₙ = 1/10*sqrt(ρ);                                                 # minimum distance between  
 k = 1                                                               # Wave number - vetor
@@ -46,11 +44,11 @@ angulo_controle = 30                                                # coehrent a
 b₀ = (4*N)/(Y*k)#(4*X*ρ)/k;                                         # optical depth
 Δ = 0;                                                              # Detuning - indicador de pertubação 
 delta_min = 0;                                                      # minimum Detuning
-delta_max = 10;                                                     # maximum Detuning
-N_div = 100;                                                        # number of divisions 
+delta_max = 40;                                                     # maximum Detuning
+N_div = 1000;                                                        # number of divisions 
 delta_range = collect(range(delta_min, delta_max, length = N_div)); # Detuning range
 Reflection = 0                                                      # efficient reflection coefficient of the material
-Realizações = 10                                                    # number of realizations 
+Realizações = 1                                                     # number of realizations 
 
 #-Plot parameters-#
 
@@ -105,6 +103,7 @@ for i in 1:N_div
     Transmissoes4[i] = ohm_law_medio[1]
 end
 
-Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
-Transmissoes_por_b(b,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
-Transmissoes_por_b_log_log(b,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
+#Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
+#Transmissoes_por_b(b,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
+Transmissoes_por_b_log(b,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3)
+Transmissoes_por_b_lin(b,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3)
