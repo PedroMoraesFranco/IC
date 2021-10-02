@@ -18,8 +18,9 @@ include("Programas base\\P1-Criando nuvem.jl");
 include("Programas base\\P2-sensores.jl");
 include("Programas base\\P3-Intensidade.jl");
 include("Programas base\\P4-Beer_Lambert_law.jl");
+include("Programas base\\P5-ohm_law.jl");
 include("Plots\\Plotter.jl");
-include("Extração/E2-autoval.jl");
+include("Extração\\E1-transmissão.jl");
 
 #-Data-#
 
@@ -47,7 +48,7 @@ Y_max = 200;                                                     # maximum Detun
 N_div = 100;                                                        # number of divisions 
 Y_range = collect(range(Y_min, Y_max, length = N_div)); # Detuning range
 Reflection = 0                                                      # efficient reflection coefficient of the material
-Realizações = 10                                                    # number of realizations 
+Realizações = 1                                                    # number of realizations 
 
 #-Plot parameters-#
 
@@ -65,6 +66,8 @@ b = zeros(N_div);
 for i in 1:N_div
     Y = Y_range[i]
     for j in 1:Realizações
+        n = ρ*X*Y
+        N = round(Int, n)
         Entrada_E1 = E1_transmissão_ENTRADA(
             N,
             X,
@@ -101,5 +104,3 @@ for i in 1:N_div
     Transmissoes3[i] = BL_law_medio[1]
     Transmissoes4[i] = ohm_law_medio[1]
 end
-Transmissoes_por_δ₀(delta_range,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
-Transmissoes_por_b(b,delta_min, delta_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)

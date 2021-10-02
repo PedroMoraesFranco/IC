@@ -65,6 +65,8 @@ b = zeros(N_div);
 for i in 1:N_div
     X = x_range[i]
     for j in 1:Realizações
+        n = ρ*X*Y
+        N = round(Int, n)
         Entrada_E1 = E1_transmissão_ENTRADA(
             N,
             X,
@@ -101,4 +103,3 @@ for i in 1:N_div
     Transmissoes3[i] = BL_law_medio[1]
     Transmissoes4[i] = ohm_law_medio[1]
 end
-Transmissoes_por_δ₀(x_range,X_min, X_max, Transmissoes, Transmissoes2, Transmissoes3, Transmissoes4)
