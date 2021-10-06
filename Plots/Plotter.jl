@@ -483,6 +483,188 @@ function Transmissoes_por_b_lin(b,delta_min, delta_max, Transmissao1, Transmissa
 end
 
 
+function Transmissoes_por_X(delta_range,delta_min, delta_max, Transmissao1, Transmissao2, Transmissao3, Transmissao4)
+        
+    gr()
+    theme(:vibrant)
+
+    plot(delta_range, Transmissao1, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    #title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "Coherent",
+    c = :green
+    )
+    plot!(delta_range, Transmissao2, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    #title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "Diffuse",
+    c = :red
+    )
+    plot!(delta_range, Transmissao3, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    #title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "B-L",
+    c = :blue
+    )
+    plot!(delta_range, Transmissao4, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "Ohm",
+    c = :black
+    )
+    xlabel!(L"$X$")
+    ylabel!(L"$T$")
+        
+    savefig("T x X{$N}_Densidade={$ρ}_K={$k}.png")
+end
+
+function Transmissoes_por_Y(delta_range,delta_min, delta_max, Transmissao1, Transmissao2, Transmissao3, Transmissao4)
+        
+    gr()
+    theme(:vibrant)
+
+    plot(delta_range, Transmissao1, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    #title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "Coherent",
+    c = :green
+    )
+    plot!(delta_range, Transmissao2, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    #title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "Diffuse",
+    c = :red
+    )
+    plot!(delta_range, Transmissao3, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    #title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "B-L",
+    c = :blue
+    )
+    plot!(delta_range, Transmissao4, 
+    size = (tamanho+100, 3*tamanho/4),
+    left_margin = 10Plots.mm,
+    right_margin = 12Plots.mm,
+    top_margin = 5Plots.mm,
+    bottom_margin = 5Plots.mm, 
+    gridalpha = 0,
+    title = L"\textrm{Transmissão x Detuning}",
+    yscale = :log10,
+    legendfontsize = 20,
+    labelfontsize = 25,
+    titlefontsize = 30,
+    tickfontsize = 15, 
+    xticks = collect(delta_min:5:delta_max),
+    ms = 4,
+    framestyle = :box,
+    lw = 2,
+    label = "Ohm",
+    c = :black
+    )
+    xlabel!(L"$Y$")
+    ylabel!(L"$T$")
+        
+    savefig("T x Y{$N}_Densidade={$ρ}_K={$k}.png")
+end
+
 function Autoval_real_por_imag(gamma, delta)
     
     gr()

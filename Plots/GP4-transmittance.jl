@@ -53,11 +53,10 @@ Realizações = 1                                                    # number of
 #-Plot parameters-#
 
 tamanho = 1000;                                                     # plot size
-
-Transmissoes = zeros(N_div);
-Transmissoes2 = zeros(N_div);
-Transmissoes3 = zeros(N_div);
-Transmissoes4 = zeros(N_div);
+Transmissao1 = zeros(N_div)
+Transmissao2 = zeros(N_div)
+Transmissao3 = zeros(N_div)
+Transmissao4 = zeros(N_div)
 T_DIFUSO_medio = zeros(Realizações);
 T_COERENTE_medio = zeros(Realizações);
 BL_law_medio = zeros(Realizações);
@@ -99,8 +98,9 @@ for i in 1:N_div
         BL_law_medio[j] = mean(resultados[3])
         ohm_law_medio[j] = mean(resultados[4])
     end
-    Transmissoes[i] = T_COERENTE_medio[1]
-    Transmissoes2[i] = T_DIFUSO_medio[1]
-    Transmissoes3[i] = BL_law_medio[1]
-    Transmissoes4[i] = ohm_law_medio[1]
+    Transmissao1[i] = T_COERENTE_medio[1]
+    Transmissao2[i] = T_DIFUSO_medio[1]
+    Transmissao3[i] = BL_law_medio[1]
+    Transmissao4[i] = ohm_law_medio[1]
 end
+Transmissoes_por_Y(Y_range,Y_min, Y_max, Transmissao1, Transmissao2, Transmissao3, Transmissao4)
