@@ -22,11 +22,11 @@ include("Extração\\E1-transmissão.jl");
 include("Plots\\Plotter.jl");
 #-Data-#
 
-vec = 0                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
+vec = 1                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
 
 
-ρ = 0.01                                                            # density
-X = 100                                                             # slab length
+ρ = 0.0125                                                          # density
+X = 50                                                    
 Y = 200                                                             # slab width 
 N = ρ*X*Y                                                           # Number of atoms
 rₘᵢₙ = 1/10*sqrt(ρ);                                                 # minimum distance between  
@@ -41,22 +41,22 @@ Angulo_inicial_sensor = -90                                         # initial an
 Angulo_final_sensor = 270                                           # final angle of sensor
 angulo_controle = 30                                                # coehrent angle 
 b₀ = 4*N/(Y*k)#(4*X*ρ)/k;                                           # optical depth
-Δ = 0;                                                              # Detuning - indicador de pertubação 
+Δ = 5;                                                              # Detuning - indicador de pertubação 
 X_min = 50;                                                          # minimum X
 X_max = 150;                                                         # maximum x
 N_div = 100;                                                        # number of divisions 
 x_range = collect(range(X_min, X_max, length = N_div)); # Detuning range
 Reflection = 0                                                      # efficient reflection coefficient of the material
-Realizações = 10                                                    # number of realizations 
+Realizações = 1                                                     # number of realizations 
 
 #-Plot parameters-#
 
 tamanho = 1000;                                                     # plot size
 
-Transmissao1 = zeros(N_div)
-Transmissao2 = zeros(N_div)
-Transmissao3 = zeros(N_div)
-Transmissao4 = zeros(N_div)
+Transmissao1 = zeros(N_div);
+Transmissao2 = zeros(N_div);
+Transmissao3 = zeros(N_div);
+Transmissao4 = zeros(N_div);
 T_DIFUSO_medio = zeros(Realizações);
 T_COERENTE_medio = zeros(Realizações);
 BL_law_medio = zeros(Realizações);
@@ -96,11 +96,9 @@ for i in 1:N_div
         T_DIFUSO_medio[j] = mean(abs(resultados[1])^2)
         T_COERENTE_medio[j] = abs(mean(resultados[2]))^2
         BL_law_medio[j] = mean(resultados[3])
-        ohm_law_medio[j] = mean(resultados[4])
     end
     Transmissao1[i] = T_COERENTE_medio[1]
     Transmissao2[i] = T_DIFUSO_medio[1]
     Transmissao3[i] = BL_law_medio[1]
-    Transmissao4[i] = ohm_law_medio[1]
 end
-Transmissoes_por_X(x_range,X_min, X_max, Transmissao1, Transmissao2, Transmissao3, Transmissao4)
+Transmissoes_por_X(x_range,X_min, X_max, Transmissao1, Transmissao2, Transmissao3)
