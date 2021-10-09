@@ -500,7 +500,7 @@ function Transmissoes_por_X(delta_range,delta_min, delta_max, Transmissao1, Tran
     labelfontsize = 25,
     titlefontsize = 30,
     tickfontsize = 15, 
-    xticks = collect(delta_min:5:delta_max),
+    xticks = collect(delta_min:10:delta_max),
     ms = 4,
     framestyle = :box,
     lw = 2,
@@ -519,7 +519,7 @@ function Transmissoes_por_X(delta_range,delta_min, delta_max, Transmissao1, Tran
     labelfontsize = 25,
     titlefontsize = 30,
     tickfontsize = 15, 
-    xticks = collect(delta_min:5:delta_max),
+    xticks = collect(delta_min:10:delta_max),
     ms = 4,
     framestyle = :box,
     lw = 2,
@@ -538,7 +538,7 @@ function Transmissoes_por_X(delta_range,delta_min, delta_max, Transmissao1, Tran
     labelfontsize = 25,
     titlefontsize = 30,
     tickfontsize = 15, 
-    xticks = collect(delta_min:5:delta_max),
+    xticks = collect(delta_min:10:delta_max),
     ms = 4,
     framestyle = :box,
     lw = 2,
@@ -548,7 +548,7 @@ function Transmissoes_por_X(delta_range,delta_min, delta_max, Transmissao1, Tran
     xlabel!(L"$L$")
     ylabel!(L"$T$")
         
-    savefig("T x X, Δ={$Δ},Densidade={$ρ}_K={$k}.png")
+    savefig("T x X, vec={$vec}, Δ={$Δ},Densidade={$ρ}_K={$k}.png")
 end
 
 function Transmissoes_por_Y(delta_range,delta_min, delta_max, Transmissao1, Transmissao2, Transmissao3)
@@ -568,7 +568,7 @@ function Transmissoes_por_Y(delta_range,delta_min, delta_max, Transmissao1, Tran
     labelfontsize = 25,
     titlefontsize = 30,
     tickfontsize = 15, 
-    xticks = collect(delta_min:5:delta_max),
+    xticks = collect(delta_min:50:delta_max),
     ms = 4,
     framestyle = :box,
     lw = 2,
@@ -587,7 +587,7 @@ function Transmissoes_por_Y(delta_range,delta_min, delta_max, Transmissao1, Tran
     labelfontsize = 25,
     titlefontsize = 30,
     tickfontsize = 15, 
-    xticks = collect(delta_min:5:delta_max),
+    xticks = collect(delta_min:50:delta_max),
     ms = 4,
     framestyle = :box,
     lw = 2,
@@ -606,7 +606,7 @@ function Transmissoes_por_Y(delta_range,delta_min, delta_max, Transmissao1, Tran
     labelfontsize = 25,
     titlefontsize = 30,
     tickfontsize = 15, 
-    xticks = collect(delta_min:5:delta_max),
+    xticks = collect(delta_min:50:delta_max),
     ms = 4,
     framestyle = :box,
     lw = 2,
@@ -616,7 +616,7 @@ function Transmissoes_por_Y(delta_range,delta_min, delta_max, Transmissao1, Tran
     xlabel!(L"$l$")
     ylabel!(L"$T$")
         
-    savefig("T x Y, Δ={$Δ}, N={$N}_Densidade={$ρ}_K={$k}.png")
+    savefig("T x Y,vec={$vec}, Δ={$Δ}, N={$N}_Densidade={$ρ}_K={$k}.png")
 end
 
 function Autoval_real_por_imag(gamma, delta)

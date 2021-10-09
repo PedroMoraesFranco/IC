@@ -22,13 +22,11 @@ include("Extração\\E1-transmissão.jl");
 include("Plots\\Plotter.jl");
 #-Data-#
 
-vec = 1                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
+vec = 0                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
 
 
-ρ = 0.0125                                                          # density
-X = 50                                                    
+ρ = 0.0125                                                          # density                                                    
 Y = 200                                                             # slab width 
-N = ρ*X*Y                                                           # Number of atoms
 rₘᵢₙ = 1/10*sqrt(ρ);                                                 # minimum distance between  
 k = 1                                                               # Wave number - vetor
 ω₀ =  6*π/k#Y/10                                                    # Cintura 
@@ -40,8 +38,7 @@ Nsensor = 1000                                                      # Number of 
 Angulo_inicial_sensor = -90                                         # initial angle of sensor
 Angulo_final_sensor = 270                                           # final angle of sensor
 angulo_controle = 30                                                # coehrent angle 
-b₀ = 4*N/(Y*k)#(4*X*ρ)/k;                                           # optical depth
-Δ = 5;                                                              # Detuning - indicador de pertubação 
+Δ = 2;                                                              # Detuning - indicador de pertubação 
 X_min = 50;                                                          # minimum X
 X_max = 150;                                                         # maximum x
 N_div = 100;                                                        # number of divisions 
@@ -53,6 +50,9 @@ Realizações = 1                                                     # number o
 
 tamanho = 1000;                                                     # plot size
 
+X = zeros(N_div);
+b₀ = zeros(N_div);
+N = zeros(N_div);
 Transmissao1 = zeros(N_div);
 Transmissao2 = zeros(N_div);
 Transmissao3 = zeros(N_div);
@@ -66,6 +66,7 @@ for i in 1:N_div
     X = x_range[i]
     for j in 1:Realizações
         n = ρ*X*Y
+        b₀ = (4*X*ρ)/k
         N = round(Int, n)
         Entrada_E1 = E1_transmissão_ENTRADA(
             N,

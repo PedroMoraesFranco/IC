@@ -25,10 +25,8 @@ include("Extração\\E1-transmissão.jl");
 #-Data-#
 
 vec = 1                                                             # vec = 1 -> vectorial case ### vec = 0 -> scalar case
-Y = 100
 ρ = 0.0375                                                            # density
 X = 80                                                             # slab length
-N = ρ*X*Y                                                           # Number of atoms
 rₘᵢₙ = 1/10*sqrt(ρ);                                                 # minimum distance between   
 k = 1                                                               # Wave number - vetor
 ω₀ =  6*π/k#Y/10                                                    # Cintura 
@@ -40,18 +38,21 @@ Nsensor = 1000                                                      # Number of 
 Angulo_inicial_sensor = -90                                         # initial angle of sensor
 Angulo_final_sensor = 270                                           # final angle of sensor
 angulo_controle = 30                                                # coehrent angle 
-b₀ = 4*N/(Y*k)#(4*X*ρ)/k;                                           # optical depth
 Δ = 5;                                                              # Detuning - indicador de pertubação 
 Y_min = 100;                                                      # minimum Detuning
 Y_max = 200;                                                     # maximum Detuning
 N_div = 100;                                                        # number of divisions 
 Y_range = collect(range(Y_min, Y_max, length = N_div)); # Detuning range
 Reflection = 0                                                      # efficient reflection coefficient of the material
-Realizações = 1                                                    # number of realizations 
+Realizações = 10                                                    # number of realizations 
 
 #-Plot parameters-#
 
 tamanho = 1000;                                                     # plot size
+
+Y = zeros(N_div);
+b₀ = zeros(N_div);
+N = zeros(N_div);
 Transmissao1 = zeros(N_div);
 Transmissao2 = zeros(N_div);
 Transmissao3 = zeros(N_div);
